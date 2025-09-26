@@ -1,9 +1,9 @@
 <template>
   <div>
-    <button @click="showImport = true">Import CSV</button>
+    <button @click="showImportPrompt = true">Import CSV</button>
 
     <ImportPrompt
-      v-model:show="showImport"
+      v-model:show="showImportPrompt"
     />
   </div>
 </template>
@@ -12,7 +12,7 @@
 import { ref } from 'vue'
 import ImportPrompt from './ImportPrompt.vue';
 
-const showImport = ref(false)
+const showImportPrompt = ref(false)
 
 </script>
 

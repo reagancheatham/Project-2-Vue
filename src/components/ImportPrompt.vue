@@ -3,9 +3,9 @@
     <div v-if="showDialog" class="modal-overlay" @click.self="closeDialog">
       <div class="modal">
         <h3>Select a CSV File</h3>
-        <input type="file" accept=".csv" @change="handleFile" />
+        <input type="file" accept=".csv" @change="importFile" />
         <div class="buttons">
-            <button @click="importData">Import</button>
+          <button @click="importData">Import</button>
         </div>
         <div class="buttons">
           <button @click="closeDialog">Cancel</button>
@@ -13,51 +13,78 @@
       </div>
     </div>
   </div>
+  <ImportResult
+    v-model:show="showImportResult"
+    :csvData="csvData"
+    :csvHeader="csvHeader"
+  />
 </template>
 
 <script setup>
-import { watch, toRef, ref } from 'vue'
-import { parseCSV } from '../utils/parseCSV.js'
+import { watch, toRef, ref } from "vue";
+import { handleFile } from "../utils/csvReaderUtils/readCSV.js";
+import ImportResult from "./ImportResult.vue";
 
 const props = defineProps({
   show: Boolean,
-})
+  csv: { type: Array, default: () => [] },
+});
 
-const emit = defineEmits(['update:show'])
+const emit = defineEmits(["update:show", "csvData", "csvHeader"]);
 
-const showDialog = toRef(props, 'show')
+const showDialog = toRef(props, "show");
 
-const csvHeaders = ref([])
-const csvData = ref([])
+const csvHeader = ref([]);
+const csvData = ref([]);
+const selectedFile = ref(null);
+
+const showImportResult = ref(false);
 
 function closeDialog() {
-  emit('update:show', false) 
-  csvHeaders.value = []
-  csvData.value = []
+  emit("update:show", false);
+  csvHeader.value = [];
+  csvData.value = [];
 }
 
-function handleFile(event) {
-  const file = event.target.files[0]
-  if (file && file.type === 'text/csv') {
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      const rawText = e.target.result
-      const { headers, data } = parseCSV(rawText)
-      csvHeaders.value = headers
-      csvData.value = data
-    }
-    reader.readAsText(file)
+function importFile(event) {
+  const file = event.target.files[0];
+  if (file && file.type === "text/csv") {
+    selectedFile.value = file;
   } else {
-    alert('Please select a valid CSV file.')
+    alert("Select valid CSV");
+    selectedFile.value = null;
   }
+}
+
+async function importData() {
+  try {
+    const { headers, data } = await handleFile(selectedFile.value);
+    csvHeader.value = headers;
+    csvData.value = data;
+    if (csvHeader.value != null) {
+      showResult();
+    }
+  } catch (err) {
+    console.error("Failed to read CSV:", err);
+  }
+}
+
+function showResult() {
+  emit("update:show", false);
+  emit("csvData", csvData.value);
+  emit("csvHeader", csvHeader.value);
+  showImportResult.value = true;
 }
 </script>
 
 <style scoped>
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
