@@ -22,7 +22,7 @@
 
 <script setup>
 import { watch, toRef, ref } from "vue";
-import { handleFile } from "../utils/csvReaderUtils/readCSV.js";
+import { handleFile } from "../utils/readCSV.js";
 import ImportResult from "./ImportResult.vue";
 
 const props = defineProps({
