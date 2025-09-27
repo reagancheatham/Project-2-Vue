@@ -1,5 +1,7 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import DeleteCourseButton from "./components/DeleteCourseButton.vue";
+import DeleteAllCoursesButton from "./components/DeleteAllCoursesButton.vue";
 </script>
 
 <template>
@@ -12,6 +14,8 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <DeleteCourseButton course="1111" />
+  <DeleteAllCoursesButton />
 </template>
 
 <style scoped>
