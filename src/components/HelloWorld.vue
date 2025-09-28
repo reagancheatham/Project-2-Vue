@@ -1,17 +1,18 @@
 <script setup>
-import { ref } from 'vue'
-import courseServices from "../services/courseServices.js"
-import Course from "../services/course.js"
+import { ref } from "vue";
+import courseServices from "../services/courseServices.js";
+import Course from "../services/course.js";
 
 defineProps({
-  msg: String,
-})
+    msg: String,
+});
 
-const count = ref(0)
+const count = ref(0);
+const course = new Course("ZZZZZ", "Test Course", "Test Department", "Test Description", 1, 1);
+const updatedCourse = course;
+updatedCourse.name = "New Test Name";
 
 courseServices.delete("ZZZZZ");
-//.then(() => courseServices.create(new Course("ZZZZZ", "Test Course", "Department", "Description", "1", "1")));
-
 </script>
 
 <template>
