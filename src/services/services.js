@@ -12,7 +12,7 @@ const apiClient = axios.create({
         crossDomain: true
     },
     transformRequest: (data, headers) => JSON.stringify(data),
-    transformResponse: (data) => JSON.parse(data)
+    transformResponse: (data) => data
 });
 
 export default apiClient;
