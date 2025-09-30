@@ -2,6 +2,7 @@ import apiClient from "./services.js";
 import Course from "./course.js";
 
 const STATUS_OK = 200;
+const API_ROOT = "/courses/"
 
 export default {
     /**
@@ -9,14 +10,14 @@ export default {
      * @param {Course} course
      */
     create(course) {
-        return apiClient.post("/course-t6/", course);
+        return apiClient.post(API_ROOT, course);
     },
 
     /**
      * @returns {Promise<Course>}
      */
     async getAll() {
-        const response = await apiClient.get("/course-t6/");
+        const response = await apiClient.get(API_ROOT);
         return response.data.map((courseObject) => {
             const {
                 courseNumber,
@@ -44,7 +45,7 @@ export default {
      * @returns {Promise<Course>}
      */
     update(courseNumber, course) {
-        return apiClient.put(`/course-t6/${courseNumber}`, course);
+        return apiClient.put(`${API_ROOT}${courseNumber}`, course);
     },
 
     /**
@@ -53,7 +54,7 @@ export default {
      * @returns {Promise<Course | null>}
      */
     async find(courseNumber) {
-        const response = await apiClient.get(`/course-t6/${courseNumber}`);
+        const response = await apiClient.get(`${API_ROOT}${courseNumber}`);
 
         if (response.status != STATUS_OK)
         {
@@ -79,7 +80,7 @@ export default {
      * @param {string} courseNumber
      */
     delete(courseNumber) {
-        return apiClient.delete(`/course-t6/${courseNumber}`);
+        return apiClient.delete(`${API_ROOT}${courseNumber}`);
     },
 
     /**
@@ -87,6 +88,6 @@ export default {
      * @returns {Promise<AxiosResponse>}
      */
     deleteAll() {
-        return apiClient.delete("/course-t6/");
+        return apiClient.delete(API_ROOT);
     }
 };
