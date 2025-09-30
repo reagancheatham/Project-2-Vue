@@ -1,7 +1,10 @@
 <script setup>
-import NavBar from './components/NavBar.vue'
+import sidebar from './components/sidebar.vue';
+import topbar from './components/topbar.vue';
 </script>
 
+
 <template>
-  <NavBar />
+  <topbar />
+  <sidebar />
 </template>
