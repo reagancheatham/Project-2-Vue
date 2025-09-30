@@ -16,7 +16,7 @@ export default {
      * @returns {Promise<Course>}
      */
     async getAll() {
-        const response = await apiClient.get("/courses/");
+        const response = await apiClient.get("/course-t6/");
         return response.data.map((courseObject) => {
             const {
                 courseNumber,
@@ -44,7 +44,7 @@ export default {
      * @returns {Promise<Course>}
      */
     update(courseNumber, course) {
-        return apiClient.put(`/courses/${courseNumber}`, course);
+        return apiClient.put(`/course-t6/${courseNumber}`, course);
     },
 
     /**
@@ -53,7 +53,7 @@ export default {
      * @returns {Promise<Course | null>}
      */
     async find(courseNumber) {
-        const response = await apiClient.get(`/courses/${courseNumber}`);
+        const response = await apiClient.get(`/course-t6/${courseNumber}`);
 
         if (response.status != STATUS_OK)
         {
@@ -79,7 +79,7 @@ export default {
      * @param {string} courseNumber
      */
     delete(courseNumber) {
-        return apiClient.delete(`/courses/${courseNumber}`);
+        return apiClient.delete(`/course-t6/${courseNumber}`);
     },
 
     /**
@@ -87,6 +87,6 @@ export default {
      * @returns {Promise<AxiosResponse>}
      */
     deleteAll() {
-        return apiClient.delete("/courses/");
+        return apiClient.delete("/course-t6/");
     }
 };
