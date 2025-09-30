@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.DEV ? "http://localhost/course-t6" : "/nodeapps/2025/project2/t6";
+const baseURL = import.meta.env.DEV ? "http://localhost/course-t6" : "/course-t6";
 
 const apiClient = axios.create({
     baseURL,
