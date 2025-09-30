@@ -9,7 +9,7 @@ export default {
      * @param {Course} course
      */
     create(course) {
-        return apiClient.post("/courses/", course);
+        return apiClient.post("/course-t6/", course);
     },
 
     /**
