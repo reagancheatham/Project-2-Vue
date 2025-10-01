@@ -56,12 +56,13 @@
 import { watch, toRef, ref } from "vue";
 import Course from "../services/course.js";
 import courseServices from "../services/courseServices.js";
+import { provideSelection } from "vuetify/lib/components/VDataTable/composables/select.mjs";
 
 const props = defineProps({
-  show: Boolean,
-  course: {
-    type: String
-  }
+    show: Boolean,
+    course: {
+        type: String,
+    },
 });
 const departments = [
     "ACCT",
@@ -217,13 +218,11 @@ function changeNumber() {
     }
 }
 function closeDialog() {
-    name.value = "";
-    department.value = "";
-    number.value = "";
+    generateTextFields(props.course);
     emit("update:show", false);
 }
 
-function editClass() {
+async function editClass() {
     const course = new Course(
         number.value,
         name.value,
@@ -232,8 +231,20 @@ function editClass() {
         level.value,
         hours.value
     );
-    console.log(course);
-    courseServices.update(props.course, course);
+
+    try {
+        const existingCourse = await courseServices.find(course.courseNumber);
+        if (props.course !== existingCourse.courseNumber) {
+            alert("Course already exists");
+            return;
+        } else {
+            courseServices.update(props.course, course);
+        }
+    } catch (error) {
+        if (error.status === 404) {
+            courseServices.update(props.course, course);
+        }
+    }
     closeDialog();
 }
 </script>
