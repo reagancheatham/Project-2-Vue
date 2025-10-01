@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from "vue";
-import ViewPopup from "./ViewPopup.vue";
 
 const props = defineProps(["course"]);
 const showViewPopup = ref(false);
@@ -17,11 +16,6 @@ const handleClick = () => {
         <h1>{{ props.course.name }}</h1>
         <p>Level: {{ props.course.level }} Hour: {{ props.course.hours }}</p>
     </div>
-    
-    <ViewPopup
-        v-model:show="showViewPopup"
-        :course="props.course"
-    />
 </template>
 
 <style scoped>
