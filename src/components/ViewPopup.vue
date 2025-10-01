@@ -19,30 +19,53 @@ const closeDialog = () => {
     emit('update:show', false);
 };
 
+const editClass = () => {
+    // Edit functionality would go here
+    console.log('Edit course:', props.course);
+    closeDialog();
+};
 </script>
 
 <template>
     <div>
         <div v-if="showDialog" class="modal-overlay" @click.self="closeDialog">
             <div class="modal">
-                <h3>View</h3>
-                <label for="courseName">Course Name</label>
-                <div class="field-display">{{ course.name || 'N/A' }}</div>
-                <label for="courseDepartment">Course Department</label>
-                <div class="field-display">{{ course.department || 'N/A' }}</div>
-                <label for="courseNumber">Course Number</label>
-                <div class="field-display">{{ course.courseNumber || 'N/A' }}</div>
-                <label for="creditHours">Credit Hours</label>
-                <div class="field-display">{{ course.hours || 'N/A' }}</div>
-                <label for="level">Level</label>
-                <div class="field-display">{{ course.level || 'N/A' }}</div>
-                <label for="description">Description</label>
-                <div class="field-display">{{ course.description || 'N/A' }}</div>
-                <div class="buttons">
-                    <DeleteCourseButton :course="course.courseNumber" />
-                </div>
+                <h3>View Course</h3>
+                <v-text-field
+                    :model-value="course.name || 'N/A'"
+                    label="Course Name"
+                    readonly
+                />
+                <v-text-field
+                    :model-value="course.department || 'N/A'"
+                    label="Department"
+                    readonly
+                />
+                <v-text-field
+                    :model-value="course.courseNumber || 'N/A'"
+                    label="Course Number"
+                    readonly
+                />
+                <v-text-field
+                    :model-value="course.hours || 'N/A'"
+                    label="Credit Hours"
+                    readonly
+                />
+                <v-text-field
+                    :model-value="course.level || 'N/A'"
+                    label="Level"
+                    readonly
+                />
+                <v-text-field
+                    :model-value="course.description || 'N/A'"
+                    label="Description"
+                    readonly
+                />
                 <div class="buttons">
                     <EditButton :course="course.courseNumber" />
+                </div>
+                <div class="buttons">
+                    <DeleteCourseButton :course="course?.courseNumber" />
                 </div>
                 <div class="buttons">
                     <button @click="closeDialog">Close</button>
@@ -76,14 +99,5 @@ const closeDialog = () => {
 .buttons {
     margin-top: 1rem;
     text-align: right;
-}
-.field-display {
-    background: antiquewhite;
-    color: black;
-    border: 5px solid black;
-    display: block;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-radius: 3px;
 }
 </style>
