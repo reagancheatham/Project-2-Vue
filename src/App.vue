@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
-import NavBar from "./components/NavBar.vue";
+import sidebar from './components/sidebar.vue';
+import topbar from './components/topbar.vue';
 import courseService from "./services/courseServices";
 import CourseDisplay from "./components/CourseDisplay.vue";
 
@@ -12,10 +13,13 @@ courseService.getAll()
   console.log(courses.value);
 })
 .catch(err => console.log(err));
+
 </script>
 
+
 <template>
-    <NavBar />
+  <topbar />
+  <sidebar />
     <div class="grid-container class-list">
       <CourseDisplay
         v-for="course in courses"
