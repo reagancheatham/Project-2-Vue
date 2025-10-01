@@ -18,6 +18,7 @@
                     v-model="number"
                     class="requiredInput"
                     label="Number"
+                    @input="changeNumber"
                 />
                 <v-text-field
                     v-model.number="hours"
@@ -188,6 +189,16 @@ watch(department, (deptNew) => {
         number.value = `-${numPart}`;
     }
 });
+
+function changeNumber() {
+    const [, numPart = ""] = number.value.split("-");
+    if (department.value !== undefined && department.value !== "") {
+        number.value = `${department.value}-${numPart}`;
+        console.log(numPart);
+    } else {
+        number.value = `-${numPart}`;
+    }
+}
 
 function closeDialog() {
     name.value = "";
