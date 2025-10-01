@@ -12,10 +12,14 @@ courseService.getAll()
   console.log(courses.value);
 })
 .catch(err => console.log(err));
+import sidebar from './components/sidebar.vue';
+import topbar from './components/topbar.vue';
 </script>
 
+
 <template>
-    <NavBar />
+  <topbar />
+  <sidebar />
     <div class="grid-container class-list">
       <CourseDisplay
         v-for="course in courses"

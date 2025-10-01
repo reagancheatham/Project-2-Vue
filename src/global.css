@@ -1,0 +1,5 @@
+html, body, #app {
+    min-height: 100vh;
+    background-color: #eef2f5;
+}
+
