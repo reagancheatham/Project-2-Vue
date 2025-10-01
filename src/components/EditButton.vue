@@ -1,30 +1,28 @@
 <template>
-  <div>
-    <button @click="showEditPopup = true">Edit Course</button>
+    <div>
+        <button @click="showEditPopup = true">Edit Course</button>
 
-    <EditPopup
-      v-model:show="showEditPopup"
-    />
-  </div>
+        <EditPopup v-model:show="showEditPopup" :course="props.course" />
+    </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EditPopup from './EditPopup.vue';
+import { ref } from "vue";
+import EditPopup from "./EditPopup.vue";
 
-const showEditPopup = ref(false)
+const showEditPopup = ref(false);
 
 const props = defineProps({
-  course: {
-    type: String,
-    default: "idk....."
-  }
+    course: {
+        type: String,
+        default: "idk.....",
+    },
 });
 </script>
 
 <style scoped>
 .buttons {
-  margin-top: 1rem;
-  text-align: right;
+    margin-top: 1rem;
+    text-align: right;
 }
 </style>

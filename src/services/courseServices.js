@@ -2,7 +2,7 @@ import apiClient from "./services.js";
 import Course from "./course.js";
 
 const STATUS_OK = 200;
-const API_ROOT = "/courses/"
+const API_ROOT = "/courses/";
 
 export default {
     /**
@@ -40,8 +40,8 @@ export default {
     },
 
     /**
-     * 
-     * @param {Course} course 
+     *
+     * @param {Course} course
      * @returns {Promise<Course>}
      */
     update(courseNumber, course) {
@@ -49,24 +49,27 @@ export default {
     },
 
     /**
-     * 
-     * @param {string} courseNumber 
+     *
+     * @param {string} courseNumber
      * @returns {Promise<Course | null>}
      */
     async find(courseNumber) {
         const response = await apiClient.get(`${API_ROOT}${courseNumber}`);
 
-        if (response.status != STATUS_OK)
-        {
-            console.error(`Could not find course with courseNumber: ${courseNumber}`);
+        if (response.status != STATUS_OK) {
+            console.error(
+                `Could not find course with courseNumber: ${courseNumber}`
+            );
             return null;
         }
 
         const { courseNum, name, department, description, level, hours } =
             response.data;
 
+        console.log(response.data);
+
         return new Course(
-            courseNum,
+            courseNumber,
             name,
             department,
             description,
@@ -84,10 +87,10 @@ export default {
     },
 
     /**
-     * 
+     *
      * @returns {Promise<AxiosResponse>}
      */
     deleteAll() {
         return apiClient.delete(API_ROOT);
-    }
+    },
 };
