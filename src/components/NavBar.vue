@@ -1,6 +1,7 @@
 <script setup>
 import AccordionButton from "./AccordionButton.vue";
 import DeleteAllCoursesButton from "./DeleteAllCoursesButton.vue";
+import DeleteCourseButton from "./DeleteCourseButton.vue";
 </script>
 
 <template>
@@ -21,6 +22,9 @@ import DeleteAllCoursesButton from "./DeleteAllCoursesButton.vue";
     </li>
     <li class="item">
       <DeleteAllCoursesButton />
+    </li>
+    <li class="item">
+      <DeleteCourseButton course="ACCT-0010"/>
     </li>
   </ul>
 </template>

@@ -36,7 +36,7 @@ function closeDialog() {
 }
 
 function confirmDelete() {
-    courseServices.deleteCourse(props.course)
+    courseServices.delete(props.course)
     closeDialog()
 }
 </script>
