@@ -32,7 +32,11 @@ import Course from "../services/course.js";
 import courseServices from "../services/courseServices.js";
 
 const props = defineProps({
-    show: Boolean,
+  show: Boolean,
+  course: {
+    type: String,
+    default: "idk....."
+  }
 });
 
 const name = ref("");
@@ -41,6 +45,20 @@ const number = ref("");
 const hours = ref("");
 const level = ref("");
 const description = ref("");
+
+function generateTextFields(courseNumber) {
+    const course = courseServices.find(courseNumber);
+    if (course) {
+        name.value = course.name;
+        department.value = course.department;
+        number.value = course.courseNumber;
+        hours.value = course.hours;
+        level.value = course.level;
+        description.value = course.description;
+    }
+    console.log(course);
+}
+generateTextFields(props.course);
 
 const emit = defineEmits(["update:show"]);
 
@@ -60,13 +78,10 @@ function closeDialog() {
     name.value = "";
     department.value = "";
     number.value = "";
-    hours.value = "";
-    level.value = "";
-    description.value = "";
     emit("update:show", false);
 }
 
-function addClass() {
+function editClass() {
     const course = new Course(
         number.value,
         name.value,
@@ -75,8 +90,7 @@ function addClass() {
         level.value,
         hours.value
     );
-    courseServices.create(course);
-    console.log(course);
+    console.log(courseServices.update(props.course, course));
     closeDialog();
 }
 </script>

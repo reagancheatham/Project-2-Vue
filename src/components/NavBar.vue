@@ -4,6 +4,7 @@ import DeleteAllCoursesButton from "./DeleteAllCoursesButton.vue";
 import DeleteCourseButton from "./DeleteCourseButton.vue";
 import AddButton from "./AddButton.vue";
 import ImportButton from "./ImportButton.vue";
+import EditButton from "./EditButton.vue";
 </script>
 
 <template>
@@ -33,6 +34,12 @@ import ImportButton from "./ImportButton.vue";
     </li>
     <li class="item">
       <ImportButton />
+    </li>
+    <li class="item">
+      <DeleteCourseButton course="ACCT-0010"/>
+    </li>
+    <li class="item">
+      <EditButton course="ACCT-0010"/>
     </li>
   </ul>
 </template>
