@@ -20,7 +20,7 @@ import AddButton from "./AddButton.vue";
       <accordion-button title="Hour"> </accordion-button>
     </li>
     <li class="item">
-      <add-button title="Add" />
+      <add-button />
     </li>
   </ul>
 </template>
