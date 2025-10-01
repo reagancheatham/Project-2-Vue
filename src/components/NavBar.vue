@@ -28,11 +28,11 @@ import ImportButton from "./ImportButton.vue";
     <li class="item">
       <DeleteCourseButton course="ACCT-0010"/>
     </li>
-    <li class="item>
-      <add-button />
+    <li class="item">
+      <AddButton />
     </li>
     <li class="item">
-      <import-button />
+      <ImportButton />
     </li>
   </ul>
 </template>
