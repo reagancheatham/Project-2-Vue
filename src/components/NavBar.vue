@@ -22,31 +22,34 @@ import AddButton from "./AddButton.vue";
     <li class="item">
       <add-button title="Add" />
     </li>
+    <li class="item">
+      <import-button />
+    </li>
   </ul>
 </template>
 
 <style scoped>
 .side-bar {
-  color: #000000;
-  border-right: 1px solid #000000;
-  list-style-type: none;
-  width: 18%;
-  position: fixed;
-  height: 100%;
-  top: 0;
-  left: 0;
+    color: #000000;
+    border-right: 1px solid #000000;
+    list-style-type: none;
+    width: 18%;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
 .title {
-  padding: 4px;
-  font-size: 28px;
-  font-weight: 600;
-  text-align: left;
+    padding: 4px;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: left;
 }
 
 .item {
-  padding: 4px;
-  text-align: left;
+    padding: 4px;
+    text-align: left;
 }
 
 .button-content {
