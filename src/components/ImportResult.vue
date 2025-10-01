@@ -42,6 +42,8 @@
 </template>
 <script setup>
 import { toRef, ref } from "vue";
+import courseServices from "../services/courseServices.js";
+import Course from "../services/course.js";
 
 const props = defineProps({
     show: Boolean,
@@ -51,13 +53,26 @@ const props = defineProps({
 const emit = defineEmits(["update:show"]);
 
 const showDialog = toRef(props, "show");
+const csvData = toRef(props, "csvData");
 
 function closeDialog() {
     emit("update:show", false);
 }
 
 function addCourses(){
-
+  for (let i = 0; i < csvData.value.length; i++) {
+    const data = csvData.value[i];
+    const course = new Course(
+        data["Course Number"],
+        data["Name"],
+        data["Description"],
+        data["Dept"],
+        data["Level"],
+        data["Hours"]
+    )
+    courseServices.create(course);
+    console.log(course.courseNumber + " added");
+  }
 }
 </script>
 <style scoped>
