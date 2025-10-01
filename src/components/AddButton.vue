@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="showAddPopup = true">Import CSV</button>
+    <button @click="showAddPopup = true">Add Course</button>
 
     <AddPopup
       v-model:show="showAddPopup"
