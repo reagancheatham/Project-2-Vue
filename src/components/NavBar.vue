@@ -1,5 +1,6 @@
 <script setup>
 import AccordionButton from "./AccordionButton.vue";
+import DeleteAllCoursesButton from "./DeleteAllCoursesButton.vue";
 </script>
 
 <template>
@@ -17,6 +18,9 @@ import AccordionButton from "./AccordionButton.vue";
     </li>
     <li class="item">
       <accordion-button title="Hour"> </accordion-button>
+    </li>
+    <li class="item">
+      <DeleteAllCoursesButton />
     </li>
   </ul>
 </template>

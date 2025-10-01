@@ -16,7 +16,7 @@
 
 <script setup>
 import { toRef } from "vue";
-import { deleteCourse } from "../utils/deleteUtils.js"
+import courseServices from "../services/courseServices.js";
 
 const props = defineProps({
   show: Boolean,
@@ -36,7 +36,7 @@ function closeDialog() {
 }
 
 function confirmDelete() {
-    deleteCourse(props.course)
+    courseServices.deleteCourse(props.course)
     closeDialog()
 }
 </script>

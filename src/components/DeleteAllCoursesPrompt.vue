@@ -3,7 +3,7 @@
     <div v-if="showDialog" class="modal-overlay" @click.self="closeDialog">
       <div class="modal">
         <h3>Are you sure you wish to delete all courses</h3>
-        <input v-model="userInput" type="text" placeholder="CONFIRM" />
+        <input v-model="userInput" type="text" placeholder="CONFIRM" class="confirm-input"/>
         <div class="buttons">
           <button :disabled="userInput !== 'CONFIRM'" @click="confirmDelete">
             Delete
@@ -22,7 +22,7 @@
 
 <script setup>
 import { toRef, ref } from "vue";
-import { deleteAllCourses } from "../utils/deleteUtils.js";
+import courseServices from "../services/courseServices.js";
 
 const props = defineProps({
   show: Boolean,
@@ -42,7 +42,7 @@ function closeDialog() {
 
 function confirmDelete() {
   if (userInput.value === "CONFIRM") {
-    deleteAllCourses();
+    courseServices.deleteAll();
     closeDialog();
     return
   }
@@ -74,5 +74,14 @@ function confirmDelete() {
 .buttons {
   margin-top: 1rem;
   text-align: right;
+}
+.confirm-input {
+  width: 100%;
+  color:red;
+  background: black;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 3px;
 }
 </style>
