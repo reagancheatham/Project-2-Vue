@@ -25,11 +25,11 @@ function toggle() {
 
 <style scoped>
 .accordion-button {
-  color: grey;
+  color: #000000;
 }
 
 .accordion-button.open {
   background-color: grey;
-  color: black;
+  color: #000000;
 }
 </style>
