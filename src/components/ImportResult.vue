@@ -65,8 +65,8 @@ function addCourses(){
     const course = new Course(
         data["Course Number"],
         data["Name"],
-        data["Description"],
         data["Dept"],
+        data["Description"],
         data["Level"],
         data["Hours"]
     )
@@ -121,3 +121,4 @@ td {
     background: #222;
 }
 </style>
+
