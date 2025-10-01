@@ -1,26 +1,31 @@
 <script setup>
 import AccordionButton from "./AccordionButton.vue";
-import ImportButton from "./ImportButton.vue";
+import AddButton from "./AddButton.vue";
 </script>
 
 <template>
-    <ul class="side-bar">
-        <li class="title">CourseDB</li>
-        <li class="item">
-            <accordion-button title="Department">
-                <div class="button-content">test</div>
-            </accordion-button>
-        </li>
-        <li class="item">
-            <accordion-button title="Level"> </accordion-button>
-        </li>
-        <li class="item">
-            <accordion-button title="Hour"> </accordion-button>
-        </li>
-        <li class="item">
-            <import-button />
-        </li>
-    </ul>
+  <ul class="side-bar">
+    <li class="title">CourseDB</li>
+    <li class="item">
+      <accordion-button title="Department"> 
+        <div class="button-content">
+            test
+        </div>
+      </accordion-button>
+    </li>
+    <li class="item">
+      <accordion-button title="Level"> </accordion-button>
+    </li>
+    <li class="item">
+      <accordion-button title="Hour"> </accordion-button>
+    </li>
+    <li class="item">
+      <add-button />
+    </li>
+    <li class="item">
+      <import-button />
+    </li>
+  </ul>
 </template>
 
 <style scoped>
