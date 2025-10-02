@@ -10,17 +10,19 @@ import EditButton from "./EditButton.vue";
 <template>
   <ul class="side-bar">
     <li class="item">
-      <accordion-button title="Department"> 
-        <div class="button-content">
-            
-        </div>
+      <accordion-button title="Department">
+        Will be filter options
       </accordion-button>
     </li>
     <li class="item">
-      <accordion-button title="Level"> </accordion-button>
+      <accordion-button title="Level"> 
+        Will be filter options
+      </accordion-button>
     </li>
     <li class="item">
-      <accordion-button title="Hour"> </accordion-button>
+      <accordion-button title="Hour">
+        Will be filter options
+      </accordion-button>
     </li>
     <li class="item">
       <DeleteAllCoursesButton />
@@ -28,10 +30,8 @@ import EditButton from "./EditButton.vue";
     <li class="item">
       <DeleteCourseButton course="ACCT-0010"/>
     </li>
-    <li class="item">
+    <li class="button-items">
       <AddButton />
-    </li>
-    <li class="item">
       <ImportButton />
     </li>
   </ul>
@@ -43,6 +43,8 @@ import EditButton from "./EditButton.vue";
   list-style-type: none;
   width: 20%;
   position: fixed;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   top: 0;
   left: 0;
@@ -51,12 +53,15 @@ import EditButton from "./EditButton.vue";
 }
 
 .item {
-  padding-bottom: 4px;
+  padding-bottom: 20px;
   text-align: left;
 }
 
-.button-content {
-    text-align: center;
-    /* TODO: this will be for however we do filters */
+.button-items {
+  margin-top: auto;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 </style>

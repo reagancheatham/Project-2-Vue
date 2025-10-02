@@ -1,6 +1,11 @@
 <template>
   <div>
-    <button @click="showImportPrompt = true">Import CSV</button>
+    <v-btn variant="tonal" @click="showImportPrompt = true">
+      <v-icon>
+        mdi-import
+      </v-icon>
+    </v-btn>
+    <!-- <button @click="showImportPrompt = true">Import CSV</button> -->
 
     <ImportPrompt
       v-model:show="showImportPrompt"
@@ -12,7 +17,7 @@
 import { ref } from 'vue'
 import ImportPrompt from './ImportPrompt.vue';
 
-const showImportPrompt = ref(false)
+const showImportPrompt = ref(false);
 
 </script>
 
@@ -20,5 +25,16 @@ const showImportPrompt = ref(false)
 .buttons {
   margin-top: 1rem;
   text-align: right;
+}
+
+.v-btn {
+  width: 150px !important;
+  border-radius: 20px;
+  border: 2px solid #000000;
+  color: #eef2f5;
+}
+
+.v-icon {
+  color: #000000;
 }
 </style>
