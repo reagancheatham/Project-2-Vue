@@ -23,7 +23,7 @@ import searchbar from './searchbar.vue';
         display: flex;
         flex-direction: row;
         padding: 20px;
-        padding-left: 30px;
+        padding-left: 45px;
         gap: 10%;
     }
 
