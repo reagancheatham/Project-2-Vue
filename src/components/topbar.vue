@@ -25,6 +25,7 @@ import searchbar from './searchbar.vue';
         padding: 20px;
         padding-left: 30px;
         gap: 10%;
+        background: #eef2f5;
     }
 
     .title {
