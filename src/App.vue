@@ -32,9 +32,10 @@ courseService.getAll()
 
 <style>
 .class-list {
-  margin-left: 18%;
-  padding: 10px;
-  display: grid;
-  gap: 10px;
+    margin-left: 18%;
+    margin-top: 5%;
+    padding: 10px;
+    display: grid;
+    gap: 10px;
 }
 </style>
