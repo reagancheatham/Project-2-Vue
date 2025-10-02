@@ -73,7 +73,7 @@ async function addCourses() {
             )
     );
 
-    const packetSize = 1000;
+    const packetSize = 500;
 
     for (let i = 0; i < courses.length; i += packetSize)
     {
