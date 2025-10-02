@@ -33,6 +33,7 @@ const showDialog = toRef(props, "show");
 
 function closeDialog() {
   emit("update:show")
+  location.reload();
 }
 
 function confirmDelete() {
