@@ -72,12 +72,13 @@ async function addCourses() {
             data["Hours"]
         );
 
-        try {
-            await courseServices.create(course);
-            console.log(course.courseNumber + " added");
-        } catch (error) {
-            console.warn("Error adding course:", error);
-        }
+        courseServices.create(course)
+        .then(response => {
+            console.log("Course added: ", course.courseNumber);
+        })
+        .catch((error) => {
+        console.warn("Error adding course:", error);
+        });
     }
 
     closeDialog();

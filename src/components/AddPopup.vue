@@ -207,7 +207,7 @@ function closeDialog() {
     hours.value = "";
     level.value = "";
     description.value = "";
-        location.reload();
+    location.reload();
 
     emit("update:show", false);
 }
