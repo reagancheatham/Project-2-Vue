@@ -3,13 +3,15 @@
 <script setup>
 import { toRef } from "vue";
 import DeleteCourseButton from "./DeleteCourseButton.vue";
-//import EditButton from "./EditButton.vue";
+import EditButton from "./EditButton.vue";
 import courseServices from "../services/courseServices.js";
 
 const props = defineProps({
     show: Boolean,
     course: Object,
 });
+
+const courseNumber = props.course.courseNumber;
 
 const emit = defineEmits(['update:show']);
 
@@ -62,10 +64,10 @@ const editClass = () => {
                     readonly
                 />
                 <div class="buttons">
-                    <EditButton :course="course.courseNumber" />
+                    <DeleteCourseButton :course="courseNumber" />
                 </div>
                 <div class="buttons">
-                    <DeleteCourseButton :course="course?.courseNumber" />
+                    <EditButton :course="courseNumber" />
                 </div>
                 <div class="buttons">
                     <button @click="closeDialog">Close</button>

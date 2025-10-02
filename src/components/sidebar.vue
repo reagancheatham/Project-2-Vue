@@ -34,12 +34,6 @@ import EditButton from "./EditButton.vue";
     <li class="item">
       <ImportButton />
     </li>
-    <li class="item">
-      <DeleteCourseButton course="ACCT-0010"/>
-    </li>
-    <li class="item">
-      <EditButton course="ACCT-0010"/>
-    </li>
   </ul>
 </template>
 

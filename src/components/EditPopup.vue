@@ -235,7 +235,7 @@ async function submitCourse() {
 
     if (existingCourse != null) {
         if (props.courseNumber !== existingCourse.courseNumber) {
-            lert("Course already exists");
+            alert("Course already exists");
             return;
         }
     }

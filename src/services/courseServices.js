@@ -53,29 +53,29 @@ export default {
      * @param {string} courseNumber
      * @returns {Promise<Course | null>}
      */
-    async find(courseNumber) {
+    async find(courseNum) {
         try {
-            const response = await apiClient.get(`${API_ROOT}${courseNumber}`);
+            const response = await apiClient.get(`${API_ROOT}${courseNum}`);
+
+            const { courseNumber, name, department, description, level, hours } =
+                response.data;
+
+            console.log(response.data);
+
+            return new Course(
+                courseNumber,
+                name,
+                department,
+                description,
+                level,
+                hours
+            );
         } catch (error) {
             console.error(
-                `Could not find course with courseNumber: ${courseNumber}`
+                `Could not find course with courseNumber: ${courseNum}`
             );
             return null;
         }
-
-        const { courseNum, name, department, description, level, hours } =
-            response.data;
-
-        console.log(response.data);
-
-        return new Course(
-            courseNum,
-            name,
-            department,
-            description,
-            level,
-            hours
-        );
     },
 
     /**
