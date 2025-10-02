@@ -54,9 +54,9 @@ export default {
      * @returns {Promise<Course | null>}
      */
     async find(courseNumber) {
-        const response = await apiClient.get(`${API_ROOT}${courseNumber}`);
-
-        if (response.status != STATUS_OK) {
+        try {
+            const response = await apiClient.get(`${API_ROOT}${courseNumber}`);
+        } catch (error) {
             console.error(
                 `Could not find course with courseNumber: ${courseNumber}`
             );
@@ -69,7 +69,7 @@ export default {
         console.log(response.data);
 
         return new Course(
-            courseNumber,
+            courseNum,
             name,
             department,
             description,

@@ -42,7 +42,7 @@
                     label="Description"
                 />
                 <div class="buttons">
-                    <button @click="editClass">Save</button>
+                    <button @click="submitCourse">Save</button>
                 </div>
                 <div class="buttons">
                     <button @click="closeDialog">Cancel</button>
@@ -56,11 +56,10 @@
 import { watch, toRef, ref } from "vue";
 import Course from "../services/course.js";
 import courseServices from "../services/courseServices.js";
-import { provideSelection } from "vuetify/lib/components/VDataTable/composables/select.mjs";
 
 const props = defineProps({
     show: Boolean,
-    course: {
+    courseNumber: {
         type: String,
     },
 });
@@ -192,7 +191,7 @@ async function generateTextFields(courseNumber) {
     }
     console.log(course);
 }
-generateTextFields(props.course);
+generateTextFields(props.courseNumber);
 
 const emit = defineEmits(["update:show"]);
 
@@ -218,11 +217,11 @@ function changeNumber() {
     }
 }
 function closeDialog() {
-    generateTextFields(props.course);
+    generateTextFields(props.courseNumber);
     emit("update:show", false);
 }
 
-async function editClass() {
+async function submitCourse() {
     const course = new Course(
         number.value,
         name.value,
@@ -232,19 +231,17 @@ async function editClass() {
         hours.value
     );
 
-    try {
-        const existingCourse = await courseServices.find(course.courseNumber);
-        if (props.course !== existingCourse.courseNumber) {
-            alert("Course already exists");
+    const existingCourse = await courseServices.find(course.courseNumber);
+
+    if (existingCourse != null) {
+        if (props.courseNumber !== existingCourse.courseNumber) {
+            lert("Course already exists");
             return;
-        } else {
-            courseServices.update(props.course, course);
-        }
-    } catch (error) {
-        if (error.status === 404) {
-            courseServices.update(props.course, course);
         }
     }
+
+    courseServices.update(props.courseNumber, course);
+
     closeDialog();
 }
 </script>

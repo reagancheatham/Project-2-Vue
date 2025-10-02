@@ -2,7 +2,7 @@
     <div>
         <button @click="showEditPopup = true">Edit Course</button>
 
-        <EditPopup v-model:show="showEditPopup" :course="props.course" />
+        <EditPopup v-model:show="showEditPopup" :courseNumber="props.course" />
     </div>
 </template>
 
