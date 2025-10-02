@@ -204,6 +204,11 @@ function closeDialog() {
     name.value = "";
     department.value = "";
     number.value = "";
+    hours.value = "";
+    level.value = "";
+    description.value = "";
+        location.reload();
+
     emit("update:show", false);
 }
 
