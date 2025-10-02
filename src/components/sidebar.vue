@@ -4,6 +4,7 @@ import DeleteAllCoursesButton from "./DeleteAllCoursesButton.vue";
 import DeleteCourseButton from "./DeleteCourseButton.vue";
 import AddButton from "./AddButton.vue";
 import ImportButton from "./ImportButton.vue";
+import EditButton from "./EditButton.vue";
 </script>
 
 <template>
