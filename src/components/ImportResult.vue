@@ -57,7 +57,7 @@ const csvData = toRef(props, "csvData");
 
 function closeDialog() {
     emit("update:show", false);
-    //location.reload();
+    location.reload();
 }
 
 async function addCourses() {
