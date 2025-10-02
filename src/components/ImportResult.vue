@@ -73,12 +73,14 @@ async function addCourses() {
             )
     );
 
-    for (let i = 0; i < courses.length; i += 100)
+    const packetSize = 1000;
+
+    for (let i = 0; i < courses.length; i += packetSize)
     {
-        let packet = courses.slice(i, i + 100);
+        let packet = courses.slice(i, i + packetSize);
 
         await courseServices.createAll(packet);
-        console.log(`Imported packet: ${i}-${i+100}`);
+        console.log(`Imported packet: ${i}-${i+packetSize}`);
     }
 
     closeDialog();
