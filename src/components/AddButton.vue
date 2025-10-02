@@ -1,6 +1,11 @@
 <template>
   <div>
-    <button @click="showAddPopup = true">Add Course</button>
+    <!-- <button @click="showAddPopup = true">Add Course</button> -->
+     <v-btn variant="tonal" @click="showAddPopup = true">
+      <v-icon>
+        mdi-plus
+      </v-icon>
+     </v-btn>
 
     <AddPopup
       v-model:show="showAddPopup"
@@ -20,5 +25,10 @@ const showAddPopup = ref(false)
 .buttons {
   margin-top: 1rem;
   text-align: right;
+}
+
+.v-btn {
+  width: 150px !important;
+  border-radius: 20px;
 }
 </style>
