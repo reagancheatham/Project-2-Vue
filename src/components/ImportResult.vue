@@ -57,10 +57,12 @@ const csvData = toRef(props, "csvData");
 
 function closeDialog() {
     emit("update:show", false);
-    location.reload();
+    //location.reload();
 }
 
 async function addCourses() {
+    let promises = [];
+
     for (let i = 0; i < csvData.value.length; i++) {
         const data = csvData.value[i];
         const course = new Course(
@@ -72,14 +74,18 @@ async function addCourses() {
             data["Hours"]
         );
 
-        courseServices.create(course)
+        let promise = courseServices.create(course)
         .then(response => {
             console.log("Course added: ", course.courseNumber);
         })
         .catch((error) => {
         console.warn("Error adding course:", error);
         });
+
+        promises.push(promise);
     }
+
+    await Promise.allSettled(promises);
 
     closeDialog();
 }
