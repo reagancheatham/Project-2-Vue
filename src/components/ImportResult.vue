@@ -61,24 +61,24 @@ function closeDialog() {
 }
 
 async function addCourses() {
-    for (let i = 0; i < csvData.value.length; i++) {
-        const data = csvData.value[i];
-        const course = new Course(
-            data["Course Number"],
-            data["Name"],
-            data["Dept"],
-            data["Description"],
-            data["Level"],
-            data["Hours"]
-        );
+    let courses = csvData.value.map(
+        (data) =>
+            new Course(
+                data["Course Number"],
+                data["Name"],
+                data["Dept"],
+                data["Description"],
+                data["Level"],
+                data["Hours"]
+            )
+    );
 
-        courseServices.create(course)
-        .then(response => {
-            console.log("Course added: ", course.courseNumber);
-        })
-        .catch((error) => {
-        console.warn("Error adding course:", error);
-        });
+    for (let i = 0; i < courses.length; i += 100)
+    {
+        let packet = courses.slice(i, i + 100);
+
+        await courseServices.createAll(packet);
+        console.log(`Imported packet: ${i}-${i+100}`);
     }
 
     closeDialog();

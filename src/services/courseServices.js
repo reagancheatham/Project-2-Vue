@@ -19,6 +19,19 @@ export default {
     },
 
     /**
+     * 
+     * @param {Course[]} courses 
+     */
+    createAll(courses) {
+        try {
+            return apiClient.post(`${API_ROOT}all`, courses);
+        } catch (error) {
+            console.error("Error creating multiple courses!");
+            return null;
+        }
+    },
+
+    /**
      * @returns {Promise<Course>}
      */
     async getAll() {
