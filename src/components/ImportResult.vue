@@ -57,22 +57,30 @@ const csvData = toRef(props, "csvData");
 
 function closeDialog() {
     emit("update:show", false);
+    location.reload();
 }
 
-function addCourses(){
-  for (let i = 0; i < csvData.value.length; i++) {
-    const data = csvData.value[i];
-    const course = new Course(
-        data["Course Number"],
-        data["Name"],
-        data["Dept"],
-        data["Description"],
-        data["Level"],
-        data["Hours"]
-    )
-    courseServices.create(course);
-    console.log(course.courseNumber + " added");
-  }
+async function addCourses() {
+    for (let i = 0; i < csvData.value.length; i++) {
+        const data = csvData.value[i];
+        const course = new Course(
+            data["Course Number"],
+            data["Name"],
+            data["Dept"],
+            data["Description"],
+            data["Level"],
+            data["Hours"]
+        );
+
+        try {
+            await courseServices.create(course);
+            console.log(course.courseNumber + " added");
+        } catch (error) {
+            console.warn("Error adding course:", error);
+        }
+    }
+
+    closeDialog();
 }
 </script>
 <style scoped>
@@ -91,9 +99,9 @@ function addCourses(){
     background: black;
     padding: 1.5rem;
     border-radius: 5px;
-    width: 400px;
+    width: 80%;
     color: white;
-    max-height: 80vh;
+    max-height: 80%;
     overflow-y: auto;
 }
 .button {
@@ -121,4 +129,3 @@ td {
     background: #222;
 }
 </style>
-

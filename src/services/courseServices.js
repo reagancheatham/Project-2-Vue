@@ -10,7 +10,12 @@ export default {
      * @param {Course} course
      */
     create(course) {
-        return apiClient.post(API_ROOT, course);
+        try {
+            return apiClient.post(API_ROOT, course);
+        } catch (error) {
+            console.error("Error creating course:", error);
+            return null;
+        }
     },
 
     /**
@@ -57,8 +62,14 @@ export default {
         try {
             const response = await apiClient.get(`${API_ROOT}${courseNum}`);
 
-            const { courseNumber, name, department, description, level, hours } =
-                response.data;
+            const {
+                courseNumber,
+                name,
+                department,
+                description,
+                level,
+                hours,
+            } = response.data;
 
             console.log(response.data);
 
