@@ -1,7 +1,12 @@
 <script setup>
 import searchbar from './searchbar.vue';
-</script>
 
+const emit = defineEmits(['search']);
+
+const handleSearch = (searchTerm) => {
+    emit('search', searchTerm);
+};
+</script>
 
 <template>
     <div class="row">
@@ -9,7 +14,7 @@ import searchbar from './searchbar.vue';
             ClassDB
         </div>
         <div>
-            <searchbar />
+            <searchbar @search="handleSearch" />
         </div>
     </div>
 </template>

@@ -1,7 +1,24 @@
+<script setup>
+import { ref, watch } from "vue";
+
+const searchText = ref("");
+const emit = defineEmits(['search']);
+
+// Watch for changes in searchText and emit to parent
+watch(searchText, (newValue) => {
+    emit('search', newValue);
+});
+</script>
+
 <template>
     <div class="search">
         Search:
-        <input class="search-bar" type="text" /> 
+        <input 
+            class="search-bar" 
+            type="text" 
+            v-model="searchText"
+            placeholder="Search by course name..."
+        /> 
     </div>
 </template>
 
