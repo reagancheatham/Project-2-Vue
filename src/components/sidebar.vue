@@ -53,7 +53,6 @@ import EditButton from "./EditButton.vue";
 }
 
 .item {
-  padding-bottom: 20px;
   text-align: left;
 }
 
