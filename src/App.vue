@@ -1,14 +1,22 @@
 <script setup>
+import { ref } from 'vue';
 import sidebar from './components/sidebar.vue';
 import topbar from './components/topbar.vue';
 import ListView from "./components/ListView.vue";
+
+const listViewRef = ref(null);
+
+const handleSearch = (searchTerm) => {
+    if (listViewRef.value) {
+        listViewRef.value.handleSearch(searchTerm);
+    }
+};
 </script>
 
-
 <template>
-  <topbar />
+  <topbar @search="handleSearch" />
   <sidebar />
-  <ListView />
+  <ListView ref="listViewRef" />
 </template>
 
 <style>
