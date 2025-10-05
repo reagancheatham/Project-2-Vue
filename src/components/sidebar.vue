@@ -1,16 +1,16 @@
 <script setup>
 import AccordionButton from "./AccordionButton.vue";
 import DeleteAllCoursesButton from "./DeleteAllCoursesButton.vue";
-import DeleteCourseButton from "./DeleteCourseButton.vue";
 import AddButton from "./AddButton.vue";
 import ImportButton from "./ImportButton.vue";
-import EditButton from "./EditButton.vue";
 
 import { ref } from "vue";
 import { departments } from "../data/departments.js";
+import { levels } from "../data/levels.js";
+import { hours } from "../data/hours.js";
 const selectedDeptCodes = ref([]);
 const selectedLevels = ref([]);
-const selcetdHours = ref([]);
+const selectedHours = ref([]);
 </script>
 
 <template>
@@ -39,13 +39,12 @@ const selcetdHours = ref([]);
     </li>
     <li class="item">
       <accordion-button title="Level">
-        <!-- ADD LEVELS.JS -->
         <v-autocomplete
           variant="outlined"
           clearable
           v-model="selectedLevels"
           :items="levels"
-          label="Select Department"
+          label="Select Level"
           multiple
           :chips="false"
         > 
@@ -55,19 +54,37 @@ const selcetdHours = ref([]);
         </v-autocomplete>
         <div class="chip-list">
           <v-chip v-for="level in selectedLevels" :key="level" closable @click:close="selectedLevels.splice(selectedLevels.indexOf(level), 1)"> 
-            {{  dept  }}  
+            {{  level  }}  
           </v-chip>
         </div>
       </accordion-button>
     </li>
     <li class="item">
-      <accordion-button title="Hour"> Will be filter options </accordion-button>
+      <accordion-button title="Hour">
+        <v-autocomplete
+          variant="outlined"
+          clearable
+          v-model="selectedHours"
+          :items="hours"
+          label="Select Hour"
+          multiple
+          :chips="false"
+        > 
+          <template v-slot:selection="{ index }"> 
+            <span v-if="index === 0"> {{ selectedHours.length }} selected </span>
+          </template>
+        </v-autocomplete>
+        <div class="chip-list">
+          <v-chip v-for="hour in selectedHours" :key="hour" closable @click:close="selectedHours.splice(selectedHours.indexOf(hour), 1)"> 
+            {{  hour  }}  
+          </v-chip>
+        </div>
+      </accordion-button>
     </li>
     <li class="item">
-      <DeleteAllCoursesButton />
-    </li>
-    <li class="item">
-      <DeleteCourseButton course="ACCT-0010" />
+      <accordion-button title="Delete All Courses">
+        <DeleteAllCoursesButton />
+      </accordion-button>
     </li>
     <li class="button-items">
       <AddButton />
