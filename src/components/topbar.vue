@@ -29,7 +29,7 @@ const handleSearch = (searchTerm) => {
         flex-direction: row;
         padding: 20px;
         padding-left: 45px;
-        gap: 10%;
+        gap: 12%;
         background: #eef2f5;
     }
 

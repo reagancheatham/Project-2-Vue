@@ -21,7 +21,7 @@ function toggle() {
     {{ title }}
   </button>
     <div class="button-content" :class="{ open: isOpen }">
-      <slot>
+      <slot v-if="isOpen">
 
       </slot>
     </div>
@@ -32,7 +32,7 @@ function toggle() {
   color: #46494b;
   font-size: 18px;
   padding: 10px;
-  width: 190px;
+  width: 100%;
   text-align: left;
   border-radius: 8px;
   transition: color 0.5s ease, background-color 0.5s ease;
@@ -47,11 +47,11 @@ function toggle() {
   background-color: #dce2e7;
   color: #000000;
   font-weight: 600;
-  width: 190px;
   text-align: left;
 }
 
 .button-content {
+  padding-top: 20px;
   max-height: 0;
   opacity: 0;
   transition: max-height 0.4s ease, opacity 0.4s ease, padding-bottom 0.4s ease;
